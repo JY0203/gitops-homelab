@@ -1,0 +1,16 @@
+global:
+  domain: argocd.lab
+
+configs:
+  params:
+    server.insecure: true
+
+server:
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+
+dex:
+  enabled: false
+notifications:
+  enabled: false
