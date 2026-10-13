@@ -8,3 +8,15 @@
        ingressClassName: traefik
        hosts:
          - grafana.lab
+   prometheus:
+     prometheusSpec:
+       retention: 15d
+       retentionSize: 25GB
+       storageSpec:
+         volumeClaimTemplate:
+           spec:
+             storageClassName: local-path-data
+             accessModes: ["ReadWriteOnce"]
+             resources:
+               requests:
+                 storage: 30Gi
