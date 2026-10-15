@@ -8,6 +8,11 @@
        ingressClassName: traefik
        hosts:
          - grafana.lab
+     persistence:
+       enabled: true
+       type: pvc
+       storageClassName: local-path-data
+       size: 5Gi
    prometheus:
      prometheusSpec:
        retention: 15d
