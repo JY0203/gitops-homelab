@@ -1,0 +1,3 @@
+# kubeseal 預設找 kube-system/sealed-secrets-controller;
+# 不設的話名稱會跟著 release name 變成 sealed-secrets
+fullnameOverride: sealed-secrets-controller
