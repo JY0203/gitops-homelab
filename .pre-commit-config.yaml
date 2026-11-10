@@ -16,3 +16,10 @@ repos:
         exclude: ^manifests/online-boutique/kubernetes-manifests\.yaml$
       - id: trailing-whitespace
         exclude: ^manifests/online-boutique/kubernetes-manifests\.yaml$
+  - repo: local
+    hooks:
+      - id: no-plain-secret
+        name: only SealedSecret allowed in *-secrets dirs
+        language: pygrep
+        entry: '^kind:\s*["'']?Secret["'']?\s*$'
+        files: ^manifests/[^/]+-secrets/
