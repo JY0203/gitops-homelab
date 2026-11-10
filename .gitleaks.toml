@@ -1,0 +1,7 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "SealedSecret ciphertext is high-entropy and trips generic-api-key; plain Secrets here are blocked by the no-plain-secret pre-commit hook"
+targetRules = ["generic-api-key"]
+paths = ['''(^|/)manifests/[^/]+-secrets/[^/]+\.ya?ml$''']
