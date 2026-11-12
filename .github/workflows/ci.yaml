@@ -27,6 +27,7 @@ jobs:
       - name: Run pre-commit hooks
         run: SKIP=gitleaks pre-commit run --all-files --show-diff-on-failure
       - name: Install gitleaks
+        if: ${{ !cancelled() }}
         working-directory: ${{ runner.temp }}
         run: |
           base="https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}"
@@ -36,6 +37,7 @@ jobs:
           tar -xzf "gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" gitleaks
           echo "${RUNNER_TEMP}" >> "$GITHUB_PATH"
       - name: Scan PR commits with gitleaks
+        if: ${{ !cancelled() }}
         env:
           BASE_REF: ${{ github.base_ref }}
         run: gitleaks git --redact --verbose --log-opts="origin/${BASE_REF}..HEAD"
